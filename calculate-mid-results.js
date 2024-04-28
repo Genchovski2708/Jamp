@@ -5,16 +5,20 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', function() {
             var columnIndex = button.parentElement.cellIndex; // Get the column index of the button
 
+            // Adjust the column index to skip the additional column
+            columnIndex--;
 
             var rows = document.querySelectorAll('table:nth-of-type(2) tbody tr');
             var firstRowValues = document.querySelectorAll('table:nth-of-type(1) .first input');
-
 
             // Loop through each row to get the input values for the corresponding column index
             var firstRowValue = parseInt(rows[0].querySelectorAll('td')[columnIndex].querySelector('input').value);
             var secondRowValue = parseInt(rows[1].querySelectorAll('td')[columnIndex].querySelector('input').value);
             var firstRowFirstTable = parseInt(document.querySelector('table:nth-of-type(1) tbody tr:first-child').querySelectorAll('td')[columnIndex].querySelector('input').value);
 
+            console.log("First row value:", firstRowValue);
+            console.log("Second row value:", secondRowValue);
+            console.log("First row first table value:", firstRowFirstTable);
 
             // Handle NaN values by setting them to 0
             firstRowValue = isNaN(firstRowValue) ? 0 : firstRowValue;
